@@ -1,0 +1,198 @@
+th {
+  font-size: 10px;
+}
+.btn-add {
+  /* float: right; */
+}
+.tabel-my {
+  width: 0;
+}
+.tabel-my > :not(caption) > * > * {
+  padding: 0;
+}
+
+.tabel-mine {
+  padding: 0;
+  margin: 0;
+}
+
+.summa_b {
+  text-align: center;
+}
+
+.card-set {
+  max-width: 12rem;
+}
+
+.header-name {
+  text-align: center;
+}
+
+.number-price {
+  width: 100%;
+}
+
+.zamok_summ {
+  width: 60%;
+}
+
+.blockInf {
+  float: right;
+}
+
+.Модель {
+  width: 95px;
+}
+
+.Цвет {
+  width: 95px;
+}
+
+.Глухой.стекло {
+  width: 100px;
+}
+
+.Бойы {
+  width: 60px;
+}
+
+.Ени {
+  width: 60px;
+}
+
+.шт {
+  width: 50px;
+}
+
+.м2 {
+  width: 50px;
+}
+
+.Нал№ {
+  width: 50px;
+}
+
+.НалБойы {
+  width: 60px;
+}
+.НалЕни {
+  width: 60px;
+}
+
+.НалШт {
+  width: 50px;
+}
+
+.Кор№ {
+  width: 50px;
+}
+
+.КорК-Метр {
+  width: 60px;
+}
+
+.КорК-шт {
+  width: 50px;
+}
+
+.Коробка {
+  width: 50px;
+}
+
+.Добор-Бойы {
+  width: 70px;
+}
+.Добор-Ени {
+  width: 70px;
+}
+
+.Добор-шт {
+  width: 60px;
+}
+
+.Кубик {
+  width: 50px;
+}
+
+.Ночка {
+  width: 50px;
+}
+
+.Паска {
+  width: 50px;
+}
+
+.table-color {
+  border-color: black;
+}
+
+.input-border {
+  background-color: #ffff;
+  border: none;
+}
+
+.kosimsha {
+  width: 100%;
+}
+
+.x-del {
+  color: red;
+  /* font-size: 20px;
+  width: 50%;
+  height: 50%; */
+}
+.x-del:hover {
+  /* font-size: 22px; */
+  cursor: pointer;
+}
+
+.del-ico {
+  text-align: center;
+  font-size: 18px;
+}
+
+.boy-sht {
+  /* margin: -125px 0 0 -125px; */
+}
+
+.boy {
+  /* margin: -125px 0 0 -125px; */
+}
+.td-top {
+  /* padding-right: 50px;
+  padding-left: 50px; */
+}
+
+.input-num {
+  width: 100%;
+  /* padding: 0; */
+
+  /* margin-right: 50px; */
+
+  /* float: right; */
+}
+.boyin {
+  padding-left: 20px;
+}
+
+.eni {
+  padding-left: 32px;
+}
+.shts {
+  padding-left: 50px;
+}
+.table {
+  /* --bs-table-bg: transparent; */
+  --bs-table-accent-bg: transparent;
+  --bs-table-striped-color: #212529;
+  --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
+  /* --bs-table-active-color: #212529; */
+  /* --bs-table-active-bg: rgba(0, 0, 0, 0.1); */
+  --bs-table-hover-color: #212529;
+  --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
+  width: 100%;
+  /* margin-bottom: 1rem; */
+  color: #212529;
+  vertical-align: top;
+  border-color: #000;
+}
