@@ -23,6 +23,12 @@
   </body>
 
   <script>
-    window.orderId = 15
+    window.orderId = 1;
+    window.orderGenId = '0222-0011'
+
+    // window.orderId = "<?php echo $order->id; ?>";
+    // window.orderGenId = "<?php echo $order->or_id; ?>";
+    window.storeOrderItem = "http://kushmag-crm.test:8080/" + "api/order/item";
+    window.redirectToOrder = "http://kushmag-crm.test:8080/" + "order/show/" + window.orderId;
   </script>
 </html>

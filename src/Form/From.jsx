@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { dataType } from '../data/data'
 import './Form.css'
 import { List } from './List/List'
-import ReactToPrint, { useReactToPrint } from 'react-to-print'
+// import ReactToPrint, { useReactToPrint } from 'react-to-print'
 const typesVlt = [
   'Модель',
   'Цвет',
@@ -80,6 +80,9 @@ const Form = ({
       )
       WatchAdd([
         'шт',
+        'Бойы',
+       'Ени',
+       'шт',
         'НалЕни',
         'НалШт',
         'КорК-шт',
@@ -89,9 +92,14 @@ const Form = ({
         'Добор-Ени',
         'Добор-Бойы',
         'Добор-шт',
+        'Паска',
+        'Модель',
+        'Цвет',
+        'Глухой стекло',
+      'Коробка'
       ])
     }
-
+    
     const sht = getValues(getValIndex('шт_'))
     let m2Set = +totoalReduxe(getValues(getValIndex('м2_')))
     setM2(m2Set)
@@ -114,6 +122,34 @@ const Form = ({
   const DoborShtM = +totoalReduxe(getValues(getValIndex('Добор-шт_'))) || 0
   const doborBoyn = +totoalReduxe(getValues(getValIndex('Добор-Бойы_'))) || 0
   const doborEni = +totoalReduxe(getValues(getValIndex('Добор-Ени_'))) || 0
+
+  const totoalStr = (nameTeg)=>{
+    return nameTeg.reduce(
+      (previousValue, currentValue) => previousValue + currentValue
+    )
+  }
+
+  // const paskaSet =totoalStr(getValues(getValIndex('Паска_'))) || 0
+  // const korobksSet = totoalStr(getValues(getValIndex('Коробка_'))) || 0
+  // const modelSet = totoalStr(getValues(getValIndex('Модель_'))) || 0
+  // const svetSet = totoalStr(getValues(getValIndex('Цвет_'))) || 0
+  // const gluxoySet = totoalStr(getValues(getValIndex('Глухой стекло_'))) || 0
+  // const boyi = tot
+  const data =  typesVlt.map(teg=>{
+    return totoalStr(getValues(getValIndex(teg+'_'))) 
+  })
+  // console.log(data)
+  useEffect(()=>{
+    console.log('hhh')
+    getTabelInfo((prev) => ({
+      ...prev,
+      data: {
+        arrTabel: getValues(),
+        НалНум: getValues('НаличникНум'),
+        КаронаНум: getValues('КоронаНум'),
+      },
+    }))
+  },data)
   useEffect(() => {
     const nalichBoyn = getValues(getValIndex('НалБойы_'))
     const nalichSht = getValues(getValIndex('НалШт_'))
@@ -143,6 +179,9 @@ const Form = ({
     // KaraMetr,
     info.parameters.Наличник.цена,
   ])
+  //----
+ 
+
   useEffect(() => {
     getTabelInfo((prev) => ({
       ...prev,
@@ -188,6 +227,14 @@ const Form = ({
   }, [watch('НалЕни_1'), info.type])
   useEffect(() => {
     setValue('НалЕни_1', 1)
+    getTabelInfo((prev) => ({
+      ...prev,
+      data: {
+        arrTabel: getValues(),
+        НалНум: getValues('НаличникНум'),
+        КаронаНум: getValues('КоронаНум'),
+      },
+    }))
   }, [selecData])
   useEffect(() => {
     setobjPrice((prev) => ({
@@ -288,13 +335,13 @@ const Form = ({
   ]
   const tabelRef = useRef()
 
-  const sshandleZakaz = useReactToPrint({
-    content: () => zakazRef.current,
-  })
+  // const sshandleZakaz = useReactToPrint({
+  //   content: () => zakazRef.current,
+  // })
 
   return (
     <>
-      <div className="container-xxl  tabel-start mt-5 ">
+      <div className="tabel-start mt-5 ">
         <form ref={zakazRef}>
           <table className="table-bordered tabel-my">
             <thead>

@@ -68,7 +68,10 @@ export const Dovogor = ({
   useEffect(() => {
     setOnDis('СКИДКА_%.', getValues('СКИДКА_%.'))
   }, [getValues('СКИДКА_%.')])
+  const [loader,setLoader] =useState(false)
+
   const onSubmit = (data) => {
+
     let tabelInfo = []
     infoTabe.count.forEach((i) => {
       tabelInfo.push({})
@@ -78,8 +81,9 @@ export const Dovogor = ({
         }
       }
     })
+    
 
-    let dataSet = {}
+    let dataSet = {aksesSum}
     aksTypes.forEach((teg) => {
       dataSet[teg] = {
         шт: +aksesData[teg],
@@ -87,8 +91,10 @@ export const Dovogor = ({
         сумма: +aksesData[teg + '_summa'],
       }
     })
+   
     // document.location.replace('http://www.site.ru')
-    console.log({
+    
+    const infoTotal =({
       ДП: data,
       Косим: extra,
       Таблица: {
@@ -135,7 +141,28 @@ export const Dovogor = ({
       },
       АКСЕССУАРЫ: dataSet,
     })
+    const senData = async ()=>{ 
+      setLoader(true)
+      try {
+      const res =  await fetch(window.storeOrderItem, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({...infoTotal,orderId:window.orderId,orderGenId:window.orderGenId} )
+      })
+      const data = await res.json()
+      console.log(data)
+      window.location.replace(window.redirectToOrder)
+      } catch (error) {
+        console.log(error)
+        setLoader(false)
+      }
+    }
+    senData()
   }
+  
   // console.log(window.orderId)
   const [radioNds, setRadioNds] = useState(false)
 
@@ -151,7 +178,7 @@ export const Dovogor = ({
                 <th key={index}>
                   <h6>
                     <b>
-                      {' '}
+                
                       {teg == 'Сумма с НДС' ? (
                         <>
                           {teg}{' '}
@@ -201,7 +228,9 @@ export const Dovogor = ({
             </tr>
           </tbody>
         </table>
-        <input type="submit" value="send" />
+        <button disabled={loader} type="submit" className="btn btn-success">
+          {!loader?'Cохранить':<div class="spinner-border text-light" role="status"><span class="sr-only"></span></div>}
+        </button>
       </form>
     </>
   )

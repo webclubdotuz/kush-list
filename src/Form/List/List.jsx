@@ -87,15 +87,15 @@ export const List = (props) => {
   }, [m2, info.parameters.Двери.цена])
 
   const [infoZakaz, setInfoZakaz] = useState({
-    ЗаказID: window.orderId,
+    ЗаказID: window.orderGenId,
     Замерщик: '',
   })
   const [sum, setSum] = useState(0)
   const [aksesData, setAksesData] = useState({})
   const zakazRef = useRef(null)
   const [extra, setExtra] = useState('')
-  return (
-    <div>
+  return (                      
+    <div className='container-xxl'>
       <div className="row" ref={zakazRef}>
         <div className="col-md-2">
           <input
@@ -119,10 +119,9 @@ export const List = (props) => {
             className="form-control"
           />
         </div>
-        <div className="col-md-3">
+        <div className="col">
           <select
-            className="form-select col-md-4"
-            aria-label="Default select example "
+            className="form-control"
             onChange={changeSelect}
           >
             {Object.keys(dataType).map((typ, index) => (
@@ -135,10 +134,9 @@ export const List = (props) => {
             ))}
           </select>
         </div>
-        <div className="col-md-3">
+        <div className="col">
           <select
-            className="form-select col-md-4"
-            aria-label="Default select example "
+            className="form-control"
             onChange={changeParam}
           >
             {Object.keys(selecData.parameters).map((typ, index) => (
@@ -167,7 +165,7 @@ export const List = (props) => {
 
       <br />
 
-      <div className="container">
+      <div >
         <textarea
           placeholder="КОСЫМША:"
           rows={3}
